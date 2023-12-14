@@ -11,7 +11,8 @@ n = len(lines)
 # length of line of text, all the lines are equal length
 m = len(lines[0])
 
-
+# Iterates through each element in a line of text, returning true if the 
+# character iterated over is a symbol
 def is_symbol(row, col):
     if not (0 <= row < n and 0 <= col < m):
         return False
@@ -20,6 +21,7 @@ def is_symbol(row, col):
 
 ans = 0
 
+# Iterate through each line, adding valid numbers to the ans variable as you go
 for row, line in enumerate(lines):
     
     start = 0
