@@ -14,9 +14,25 @@
 
 f = open("C:\\Users\\euanc\\OneDrive\\Advent Coding Challenge\\Advent Coding Challenge Answers\\Advent-Of-Code-2023-Answers\\task 4\\t4.txt", "r")
 
+def num_list_modifier(input_string, num_type):
+    # modify string depending on if we want list of winning or acquired numbers
+    if num_type == "winning":
+        number_string = input_string[:input_string.find("|") - 1]
+    
+    elif num_type == "acquired":
+        number_string = input_string[input_string.find("|") + 2:]
+
+    output_numbers = number_string.split(" ")
+    output_numbers = [i for i in output_numbers if i]
+    output = [int(i) for i in output_numbers]
+    return output
+
 for line in f:
     current_score = 0
     total_score = 0
     wn_count = 0 # number of winning numbers in a card
     
     input_text = line[(line.find(":")) + 2:]
+
+    winning_numbers = num_list_modifier(input_text, "winning")
+    acquired_numbers = num_list_modifier(input_text, "acquired")
