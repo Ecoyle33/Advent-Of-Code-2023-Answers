@@ -26,13 +26,27 @@ def num_list_modifier(input_string, num_type):
     output_numbers = [i for i in output_numbers if i]
     output = [int(i) for i in output_numbers]
     return output
+    
+total_score = 0
 
 for line in f:
     current_score = 0
-    total_score = 0
     wn_count = 0 # number of winning numbers in a card
     
     input_text = line[(line.find(":")) + 2:]
 
     winning_numbers = num_list_modifier(input_text, "winning")
     acquired_numbers = num_list_modifier(input_text, "acquired")
+
+    for i in acquired_numbers:
+        if i in winning_numbers and wn_count == 0:
+            current_score += 1
+            wn_count += 1
+        
+        elif i in winning_numbers and wn_count >= 1:
+            current_score *= 2
+            wn_count += 1
+    
+    total_score += current_score
+
+print(total_score)
