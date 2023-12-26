@@ -20,6 +20,7 @@ winning_numbers = []
 acquired_numbers = []
 
 n = len(lines)
+copies = [[] for i in range(n + 1)]
 
 for card in lines:
     input_text = card[(card.find(":")) + 2:]
@@ -32,7 +33,21 @@ for card in lines:
 
 for i in range(n):
     winning_number_count = 0
-    for j in acquired_numbers[i]:
 
-        if j in winning_numbers[i]:
+    for num in acquired_numbers[i]:
+        if num in winning_numbers[i]:
             winning_number_count += 1
+
+# use 'copies' to keep track of which lines need copying as we iterate through n
+    for j in range(i + 1, i + winning_number_count + 1):
+        copies[i].append(j)
+
+score = [1 for i in range(n)]
+
+# add number of copies to array of 1s, sum the element values to get the answer
+for i in range(n-1, -1, -1):
+    for j in copies[i]:
+        score[i] += score[j]
+    print(score[i])
+
+print(sum(score))
