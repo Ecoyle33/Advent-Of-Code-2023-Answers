@@ -10,4 +10,13 @@
 # if they match and wn_count >= 1, double the current score and add 1 to wn_count
 # once you've iterated through the numbers you have, add the final score from the current card to the total score
 # repeat the previous steps for each card in the pile
-# return the total score 
+# return the total score
+
+f = open("C:\\Users\\euanc\\OneDrive\\Advent Coding Challenge\\Advent Coding Challenge Answers\\Advent-Of-Code-2023-Answers\\task 4\\t4.txt", "r")
+
+for line in f:
+    current_score = 0
+    total_score = 0
+    wn_count = 0 # number of winning numbers in a card
+    
+    input_text = line[(line.find(":")) + 2:]
