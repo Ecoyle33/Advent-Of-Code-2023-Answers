@@ -38,7 +38,7 @@ for i in range(n):
         if num in winning_numbers[i]:
             winning_number_count += 1
 
-# use 'copies' to keep track of which lines need copying as we iterate through n
+    # use 'copies' to keep track of which lines need copying as we iterate through n
     for j in range(i + 1, i + winning_number_count + 1):
         copies[i].append(j)
 
@@ -48,6 +48,6 @@ score = [1 for i in range(n)]
 for i in range(n-1, -1, -1):
     for j in copies[i]:
         score[i] += score[j]
-    print(score[i])
+        print(score[i])
 
 print(sum(score))
